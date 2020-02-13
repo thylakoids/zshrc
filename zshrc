@@ -2,7 +2,7 @@
 #export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/dracarys/.oh-my-zsh
+export ZSH=/home/liyulong/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -10,7 +10,7 @@ export ZSH=/Users/dracarys/.oh-my-zsh
 # ZSH_THEME="agnoster"
 # ZSH_THEME="ys"
 # ZSH_THEME = 'avit', 'robbyrussell'
-ZSH_THEME="avit"
+ZSH_THEME="robbyrussell"
 
 
 # Uncomment the following line to use case-sensitive completion.
@@ -76,11 +76,17 @@ plugins=(git)
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
-export PATH="/Users/dracarys/miniconda2/bin:$PATH"
-# local python
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-# vim
-export PATH="/usr/local/opt/vim/bin:$PATH"
+# python2-anaconda2
+export PATH="/home/liyulong/anaconda2/bin:$PATH"
+# gephi
+export PATH="/home/liyulong/gephi-0.9.1/bin:$PATH"
+# angular ng
+export PATH="/usr/local/share/node/lib/node_modules/@angular/cli/bin:$PATH"
+# jdk
+export PATH="/usr/jdk/bin:$PATH"
+#pycharm
+export PATH="/usr/local/share/pycharm-community-2017.2.4/bin:$PATH"
+
 # If you have faced the error on MacOS X, here's the quick fix - add these lines to your ~/.bash_profile:
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -94,48 +100,14 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias ipython="python -m IPython"
 # alias pipenv="pipenv --python ~/miniconda2/envs/py36/bin/python3"
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
+alias pbcopy="xclip -selection clipboard"
+alias pbpaste="xclip -selection clipboard -o"
+alias nautilus="xdg-open >/dev/null 2>&1"
+function trash(){
+mv $@ /tmp/trash_tmp
+}
 
 # custom plugins
 plugins=(zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh # INFO:this should after plugins before nvm
-# source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# nvm, node, npm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
-export NODE_PATH=$(npm root --quiet -g)
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Custom Welcome Messages
-# echo "$(<~/welcome.txt)"
-
-# proxy
-# curl ip.sb
-# curl ip.gs
-function proxy_off(){
-        unset http_proxy
-        unset https_proxy
-        unset ftp_proxy
-        unset rsync_proxy
-        echo -e "已关闭代理"
-    }
-
-function proxy_on() {
-        export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-        # export http_proxy="socks5://127.0.0.1:1086"
-        export http_proxy="http://127.0.0.1:1087"
-        export https_proxy=$http_proxy
-        export ftp_proxy=$http_proxy
-        export rsync_proxy=$http_proxy
-        export HTTP_PROXY=$http_proxy
-        export HTTPS_PROXY=$http_proxy
-        export FTP_PROXY=$http_proxy
-        export RSYNC_PROXY=$http_proxy
-        echo -e "已开启代理"
-    }
