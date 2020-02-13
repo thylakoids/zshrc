@@ -94,8 +94,9 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias ipython="python -m IPython"
 # alias pipenv="pipenv --python ~/miniconda2/envs/py36/bin/python3"
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+# alias ip="curl ip.sb"
 alias localip="ipconfig getifaddr en0"
+alias synctime="sudo sntp -sS time.apple.com"
 
 # custom plugins
 plugins=(zsh-syntax-highlighting zsh-autosuggestions)
