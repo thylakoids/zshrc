@@ -103,11 +103,43 @@ export LANG=en_US.UTF-8
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
 alias nautilus="xdg-open >/dev/null 2>&1"
-function trash(){
-mv $@ /tmp/trash_tmp
-}
+alias python=python3
+alias pip=pip3
+alias ipython=ipython3
 
 # custom plugins
 plugins=(zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh # INFO:this should after plugins before nvm
 
+# nvm, node, npm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+export NODE_PATH=$(npm root --quiet -g)
+
+function trash(){
+mv $@ /tmp/trash_tmp
+}
+
+function proxy_off(){
+        unset http_proxy
+        unset https_proxy
+        unset ftp_proxy
+        unset rsync_proxy
+        echo -e "已关闭代理"
+    }
+
+function proxy_on() {
+        export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+        # export http_proxy="socks5://127.0.0.1:1086"
+        export http_proxy="http://127.0.0.1:6666"
+        export https_proxy=$http_proxy
+        export ftp_proxy=$http_proxy
+        export rsync_proxy=$http_proxy
+        export HTTP_PROXY=$http_proxy
+        export HTTPS_PROXY=$http_proxy
+        export FTP_PROXY=$http_proxy
+        export RSYNC_PROXY=$http_proxy
+        echo -e "已开启代理"
+    }
