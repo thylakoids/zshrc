@@ -107,6 +107,7 @@ export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 alias open="xdg-open  >/dev/null 2>&1"
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
+alias synctime="sudo ntpdate time.windows.com"
 
 # custom plugins
 plugins=(zsh-syntax-highlighting zsh-autosuggestions)
