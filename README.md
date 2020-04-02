@@ -1,16 +1,37 @@
 
 <!-- vim-markdown-toc GFM -->
 
-1. [zshrc](#zshrc)
-    1. [Usefull tool](#usefull-tool)
+1. [Zshrc](#zshrc)
+    1. [Usefull Tool](#usefull-tool)
+    1. [Git Merge One File](#git-merge-one-file)
         1. [pbcopy, pbpaste](#pbcopy-pbpaste)
         1. [synctime](#synctime)
         1. [open](#open)
         1. [trash](#trash)
 
 <!-- vim-markdown-toc -->
-# zshrc
-## Usefull tool
+Zshrc
+=====
+Usefull Tool
+------------
+Git Merge One File
+------------------
+
+git里面的merge是全merge ，没有单个文件merge。
+
+要实现一个文件的merge ，可以使用git checkout 这个命令
+
+
+
+git checkout xxxx（分支名）  xxxx（文件名）
+
+这个命令是覆盖的意思，是说把另一个分支的文件覆盖到当前的分支上，
+
+所有，最好不要在master上面操作，可以建立一个临时的分支，然后，commit。
+
+在merge到master分支上，这样就实现了单个文件的merge.
+
+**Note:**只在master上修改readme, 然后覆盖分支的文件.
 ### pbcopy, pbpaste
 - mac
     - pbcopy, pbpaste
@@ -38,8 +59,9 @@
 2. .zshrc
 ```bash
 function trash(){
-mv $@ /tmp/trash_tmp
-}
+        mkdir -p /tmp/trash_tmp
+        mv $@ /tmp/trash_tmp
+    }
 ```
 
         $@：表示脚本所有参数的内容；$#：表示返回脚本所有参数的个数。 $$：脚本运行的当前进程ID号
@@ -54,3 +76,33 @@ mv $@ /tmp/trash_tmp
             rwx:owner, 7
             r-x:group, 5
             r-x:other, 5
+4. proxy
+- linux
+    proxychains: /etc/proxychains.conf
+- mac
+```
+# proxy
+# curl ip.sb
+function proxy_off(){
+        unset http_proxy
+        unset https_proxy
+        unset ftp_proxy
+        unset rsync_proxy
+        echo -e "已关闭代理"
+    }
+
+function proxy_on() {
+        export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+        # export http_proxy="socks5://127.0.0.1:1086"
+        export http_proxy="http://127.0.0.1:1087"
+        export https_proxy=$http_proxy
+        export ftp_proxy=$http_proxy
+        export rsync_proxy=$http_proxy
+        export HTTP_PROXY=$http_proxy
+        export HTTPS_PROXY=$http_proxy
+        export FTP_PROXY=$http_proxy
+        export RSYNC_PROXY=$http_proxy
+        echo -e "已开启代理"
+    }
+
+```
