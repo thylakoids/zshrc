@@ -116,9 +116,12 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Custom Welcome Messages
 # echo "$(<~/welcome.txt)"
 
+function trash(){
+        mkdir -p /tmp/trash_tmp
+        mv $@ /tmp/trash_tmp
+    }
 # proxy
 # curl ip.sb
-# curl ip.gs
 function proxy_off(){
         unset http_proxy
         unset https_proxy

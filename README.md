@@ -37,7 +37,7 @@
 1. `mkdir /tmp/trash_tmp`
 2. .zshrc
 ```bash
-function trash{
+function trash(){
 mv $@ /tmp/trash_tmp
 }
 ```
