@@ -31,6 +31,7 @@ git checkout xxxx（分支名）  xxxx（文件名）
 
 在merge到master分支上，这样就实现了单个文件的merge.
 
+**Note:**只在master上修改readme, 然后覆盖分支的文件.
 ### pbcopy, pbpaste
 - mac
     - pbcopy, pbpaste
@@ -75,3 +76,33 @@ function trash(){
             rwx:owner, 7
             r-x:group, 5
             r-x:other, 5
+4. proxy
+- linux
+    proxychains: /etc/proxychains.conf
+- mac
+```
+# proxy
+# curl ip.sb
+function proxy_off(){
+        unset http_proxy
+        unset https_proxy
+        unset ftp_proxy
+        unset rsync_proxy
+        echo -e "已关闭代理"
+    }
+
+function proxy_on() {
+        export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+        # export http_proxy="socks5://127.0.0.1:1086"
+        export http_proxy="http://127.0.0.1:1087"
+        export https_proxy=$http_proxy
+        export ftp_proxy=$http_proxy
+        export rsync_proxy=$http_proxy
+        export HTTP_PROXY=$http_proxy
+        export HTTPS_PROXY=$http_proxy
+        export FTP_PROXY=$http_proxy
+        export RSYNC_PROXY=$http_proxy
+        echo -e "已开启代理"
+    }
+
+```
