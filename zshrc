@@ -55,7 +55,8 @@ ZSH_THEME="avit"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(z zsh-syntax-highlighting zsh-autosuggestions)
+source $ZSH/oh-my-zsh.sh # INFO:this should after plugins before nvm
 
 # User configuration
 
@@ -97,12 +98,7 @@ export LANG=en_US.UTF-8
 # alias ip="curl ip.sb"
 alias localip="ipconfig getifaddr en0"
 alias synctime="sudo sntp -sS time.apple.com"
-
-# custom plugins
-plugins=(zsh-syntax-highlighting zsh-autosuggestions)
-source $ZSH/oh-my-zsh.sh # INFO:this should after plugins before nvm
-# source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+alias vim='nvim'
 
 # nvm, node, npm
 export NVM_DIR="$HOME/.nvm"
@@ -132,8 +128,9 @@ function proxy_off(){
 
 function proxy_on() {
         export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-        # export http_proxy="socks5://127.0.0.1:1086"
-        export http_proxy="http://127.0.0.1:1087"
+        export http_proxy="socks5://127.0.0.1:1086"
+        # export http_proxy="http://127.0.0.1:1087"
+        # export http_proxy="http://125.124.83.80:8787" # tianyiyun
         export https_proxy=$http_proxy
         export ftp_proxy=$http_proxy
         export rsync_proxy=$http_proxy
