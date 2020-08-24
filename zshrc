@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(z zsh-syntax-highlighting zsh-autosuggestions)
 
 
 # User configuration
@@ -107,10 +107,10 @@ export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 alias open="xdg-open  >/dev/null 2>&1"
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
-alias synctime="sudo ntpdate time.windows.com"
+alias synctime="sudo ntpdate time.apple.com"
+alias nvim="/home/dracarys/Applications/nvim.appimage"
+alias vim="nvim"
 
-# custom plugins
-plugins=(zsh-syntax-highlighting zsh-autosuggestions)
 #INFO call this after plugins, before nvm
 source $ZSH/oh-my-zsh.sh
 
@@ -123,6 +123,10 @@ export NODE_PATH=$(npm root --quiet -g)
 
 # yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# brew
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
 
 function trash(){
         mkdir -p /tmp/trash_tmp
