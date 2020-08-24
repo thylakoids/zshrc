@@ -99,6 +99,7 @@ export LANG=en_US.UTF-8
 alias localip="ipconfig getifaddr en0"
 alias synctime="sudo sntp -sS time.apple.com"
 alias vim='nvim'
+alias vi='nvim'
 
 # nvm, node, npm
 if [[ ! -a ~/.zsh-async ]]; then
