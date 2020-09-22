@@ -100,6 +100,7 @@ alias localip="ipconfig getifaddr en0"
 alias synctime="sudo sntp -sS time.apple.com"
 alias vim='nvim'
 alias vi='nvim'
+alias epac='vim /Users/dracarys/Library/Application\ Support/V2RayX/pac/pac.js'
 
 # nvm, node, npm
 if [[ ! -a ~/.zsh-async ]]; then
@@ -109,15 +110,9 @@ source ~/.zsh-async/async.zsh
 
 export NVM_DIR="$HOME/.nvm"
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
-function load_nvm() {
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-    export NODE_PATH=$(npm root --quiet -g)
-}
-# Initialize worker
-async_start_worker nvm_worker -n
-async_register_callback nvm_worker load_nvm
-async_job nvm_worker sleep 0.1
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  --no-use
+# nvm which default
+export PATH=$HOME/.nvm/versions/node/v13.5.0/bin/:$PATH
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
