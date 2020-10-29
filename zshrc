@@ -101,18 +101,17 @@ alias synctime="sudo sntp -sS time.apple.com"
 alias vim='nvim'
 alias vi='nvim'
 alias epac='vim /Users/dracarys/Library/Application\ Support/V2RayX/pac/pac.js'
+alias python3='python'
+alias ipython='ipython3'
 
 # nvm, node, npm
-if [[ ! -a ~/.zsh-async ]]; then
-  git clone git@github.com:mafredri/zsh-async.git ~/.zsh-async
-fi
-source ~/.zsh-async/async.zsh
-
 export NVM_DIR="$HOME/.nvm"
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  --no-use
 # nvm which default
 export PATH=$HOME/.nvm/versions/node/v13.5.0/bin/:$PATH
+# npm root --quiet -g
+export NODE_PATH='/Users/dracarys/.nvm/versions/node/v13.5.0/lib/node_modules'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -136,7 +135,8 @@ function proxy_off(){
 function proxy_on() {
         export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
         # export http_proxy="socks5://127.0.0.1:1086"
-        export http_proxy="http://127.0.0.1:1087"
+        # export http_proxy="http://127.0.0.1:1087"
+        export http_proxy="http://180.167.250.222:18818"
         # export http_proxy="http://125.124.83.80:8787" # tianyiyun
         export https_proxy=$http_proxy
         export ftp_proxy=$http_proxy
