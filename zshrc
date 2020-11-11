@@ -71,7 +71,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z zsh-syntax-highlighting zsh-autosuggestions)
+# zsh-syntax-highlighting.zsh be sourced at the end of the .zshrc file
+plugins=(z zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh #INFO call this after plugins, before nvm
 
 
@@ -154,7 +155,7 @@ function proxy_off(){
 
 function proxy_on() {
         export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-        export http_proxy="socks5://127.0.0.1:1080"
+        export http_proxy="socks5://127.0.0.1:1086"
         # export http_proxy="http://127.0.0.1:1087"
         export https_proxy=$http_proxy
         export ftp_proxy=$http_proxy
