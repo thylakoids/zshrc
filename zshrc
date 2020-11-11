@@ -55,7 +55,7 @@ ZSH_THEME="avit"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(z zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh # INFO:this should after plugins before nvm
 
 # User configuration
@@ -108,9 +108,9 @@ export NVM_DIR="$HOME/.nvm"
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  --no-use
 # nvm which default
-export PATH=$HOME/.nvm/versions/node/v13.5.0/bin/:$PATH
+export PATH=$HOME/.nvm/versions/node/v15.1.0/bin/:$PATH
 # npm root --quiet -g
-export NODE_PATH='/Users/dracarys/.nvm/versions/node/v13.5.0/lib/node_modules'
+export NODE_PATH='/Users/dracarys/.nvm/versions/node/v15.1.0/lib/node_modules'
 
 
 function trash(){
@@ -130,8 +130,8 @@ function proxy_off(){
 function proxy_on() {
         export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
         # export http_proxy="socks5://127.0.0.1:1086"
-        export http_proxy="http://127.0.0.1:1087"
-        # export http_proxy="http://180.167.250.222:18818"
+        # export http_proxy="http://127.0.0.1:1087"
+        export http_proxy="http://180.167.250.222:18818"
         # export http_proxy="http://125.124.83.80:8787" # tianyiyun
         export https_proxy=$http_proxy
         export ftp_proxy=$http_proxy
