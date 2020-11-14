@@ -55,6 +55,7 @@ ZSH_THEME="avit"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# make sure zsh-syntax-highlighting is the last
 plugins=(z zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh # INFO:this should after plugins before nvm
 
@@ -117,8 +118,7 @@ function trash(){
         mkdir -p /tmp/trash_tmp
         mv $@ /tmp/trash_tmp
     }
-# proxy
-# curl ip.sb
+
 function proxy_off(){
         unset http_proxy
         unset https_proxy
@@ -130,9 +130,7 @@ function proxy_off(){
 function proxy_on() {
         export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
         # export http_proxy="socks5://127.0.0.1:1086"
-        # export http_proxy="http://127.0.0.1:1087"
-        export http_proxy="http://180.167.250.222:18818"
-        # export http_proxy="http://125.124.83.80:8787" # tianyiyun
+        export http_proxy="http://127.0.0.1:1087"
         export https_proxy=$http_proxy
         export ftp_proxy=$http_proxy
         export rsync_proxy=$http_proxy
@@ -146,7 +144,6 @@ function proxy_on() {
 
 # Custom Welcome Messages
 # echo "$(<~/welcome.txt)"
-proxy_on
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
