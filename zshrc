@@ -121,23 +121,32 @@ fi
 source ~/.zsh-async/async.zsh
 
 export NVM_DIR="$HOME/.nvm"
-export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
-function load_nvm() {
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-    export NODE_PATH=$(npm root --quiet -g)
-}
-# Initialize worker
-async_start_worker nvm_worker -n
-async_register_callback nvm_worker load_nvm
-async_job nvm_worker sleep 0.1
+export NVM_NODEJS_ORG_MIRROR=http://nodejs.org/dist
+# function load_nvm() {
+#     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+#     [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+#     export NODE_PATH=$(npm root --quiet --location=global)
+# }
+# # Initialize worker
+# async_start_worker nvm_worker -n
+# async_register_callback nvm_worker load_nvm
+# async_job nvm_worker sleep 0.1
 
 # yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# llvm
+export PATH="/home/linuxbrew/.linuxbrew/opt/llvm/bin:$PATH"
+
 # brew
+export HOMEBREW_AUTO_UPDATING=0
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+export C_INCLUDE_PATH="/home/linuxbrew/.linuxbrew/include"
+export CPLUS_INCLUDE_PATH="/home/linuxbrew/.linuxbrew/include"
+
+#pkg-config
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 
 function trash(){
         mkdir -p /tmp/trash_tmp
@@ -150,13 +159,18 @@ function proxy_off(){
         unset https_proxy
         unset ftp_proxy
         unset rsync_proxy
+        unset HTTP_PROXY
+        unset HTTPS_PROXY
+        unset FTP_PROXY
+        unset RSYNC_PROXY
+        unset ALL_PROXY
         echo -e "已关闭代理"
     }
 
 function proxy_on() {
         export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-        export http_proxy="socks5://127.0.0.1:1086"
-        # export http_proxy="http://127.0.0.1:1087"
+        # export http_proxy="socks5://127.0.0.1:1086"
+        export http_proxy="http://127.0.0.1:1087"
         export https_proxy=$http_proxy
         export ftp_proxy=$http_proxy
         export rsync_proxy=$http_proxy
@@ -164,5 +178,8 @@ function proxy_on() {
         export HTTPS_PROXY=$http_proxy
         export FTP_PROXY=$http_proxy
         export RSYNC_PROXY=$http_proxy
+        export ALL_PROXY=$http_proxy
         echo -e "已开启代理"
     }
+
+proxy_on
